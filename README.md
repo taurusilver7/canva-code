@@ -44,4 +44,6 @@ Resolve any [path errors](https://ui.shadcn.com/docs/installation/vite) in `vite
 
 Follow the guide and add [shadcn-ui] to the dependencies. Add other dependencies based on the project requirements. Most of them are based on the image conversions, screenshot capture.
 
+Add the react Toaster at the top level in the root component. Make a programming language object file to support multi pardigarm languages.
+
 ## Deploy
