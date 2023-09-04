@@ -1,4 +1,6 @@
 import CodeEditor from "./components/CodeEditor";
+import ExportOptions from "./components/controls/ExportOptions";
+import { Card, CardContent } from "./components/ui/card";
 import { cn } from "./lib/utils";
 import { fonts, themes } from "./options";
 import useStore from "./store";
@@ -12,7 +14,7 @@ function App() {
 
 	const editorRef = useRef(null);
 	return (
-		<div className="dark bg-neutral-950 text-white flex flex-col gap-5 min-h-screen justify-center items-center">
+		<main className="dark bg-neutral-950 text-white flex gap-5 min-h-screen justify-center items-center">
 			<link
 				rel="stylesheet"
 				href={themes[theme].theme}
@@ -35,7 +37,13 @@ function App() {
 			>
 				<CodeEditor />
 			</div>
-		</div>
+
+			<Card className="fixed top-8 py-6 px-8 mx-6 bg-neutral-900/90 backdrop-blur">
+				<CardContent className="flex flex-wrap gap-6 p-0">
+					<ExportOptions />
+				</CardContent>
+			</Card>
+		</main>
 	);
 }
 
