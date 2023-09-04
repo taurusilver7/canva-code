@@ -13,10 +13,18 @@ import {
 	Link2Icon,
 	Share2Icon,
 } from "@radix-ui/react-icons";
+import { toBlob, toPng, toSvg } from "html-to-image";
+import useStore from "@/store";
+import { toast } from "react-hot-toast";
 
 function ExportOptions({ targetRef }) {
-
-   const copyImage = async () => {}
+	const copyImage = async () => {
+		const imgBlob = await toBlob(targetRef.current, {
+			pixelRatio: 2,
+		});
+		const img = new ClipboardItem({ "image/png": imgBlob });
+		navigator.clipboard.write([img]);
+	};
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
@@ -27,7 +35,16 @@ function ExportOptions({ targetRef }) {
 			</DropdownMenuTrigger>
 
 			<DropdownMenuContent className="dark">
-				<DropdownMenuItem className="gap-2">
+				<DropdownMenuItem
+					className="gap-2"
+					onClick={() =>
+						toast.promise(copyImage(), {
+							loading: "Copying...",
+							success: "Copied to Clipboard",
+							error: "Something went wrong!",
+						})
+					}
+				>
 					<ImageIcon />
 					Copy Image
 				</DropdownMenuItem>
