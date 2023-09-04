@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { codeSnippets } from "./options";
 
 const useStore = create(
 	persist(
