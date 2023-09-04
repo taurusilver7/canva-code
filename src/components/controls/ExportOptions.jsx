@@ -25,6 +25,15 @@ function ExportOptions({ targetRef }) {
 		const img = new ClipboardItem({ "image/png": imgBlob });
 		navigator.clipboard.write([img]);
 	};
+
+	const copyLink = () => {
+		const state = useStore.getState();
+		const queryParams = new URLSearchParams({
+			...state,
+			code: btoa(state.code),
+		}).toString();
+		navigator.clipboard.writeText(`${location.href}?${queryParams}`);
+	};
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
@@ -48,7 +57,13 @@ function ExportOptions({ targetRef }) {
 					<ImageIcon />
 					Copy Image
 				</DropdownMenuItem>
-				<DropdownMenuItem className="gap-2">
+				<DropdownMenuItem
+					className="gap-2"
+					onClick={() => {
+						copyLink();
+						toast.success("Link copied to clipboard!");
+					}}
+				>
 					<Link2Icon />
 					Copy Link
 				</DropdownMenuItem>

@@ -45,7 +45,7 @@ const CodeEditor = () => {
 				<div className="col-span-4 flex justify-center">
 					<input
 						type="text"
-						spellChecked={false}
+						spellCheck={false}
 						onClick={(e) => e.target.select()}
 						onChange={(e) => useStore.setState({ title: e.target.value })}
 						value={store.title}
@@ -75,7 +75,7 @@ const CodeEditor = () => {
 						fontStyle: fonts[store.fontStyle].name,
 						fontSize: store.fontSize,
 					}}
-					textAreaClassName="focus:outline-none"
+					textareaClassName="focus:outline-none"
 					onClick={(e) => e.target.select()}
 				/>
 			</div>
