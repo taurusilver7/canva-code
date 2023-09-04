@@ -47,6 +47,8 @@ Setup a global state with zustand. Create initial vales for the code-snippet use
 
 Add the export options to the menu, and create their corresponding handler functions. Create copyImage to copy the ref target image with a standard pixel ratio and copy it to clipboard.
 
-Create a copyLink handler function to 
+Create a copyLink handler function to get the code state from the store before copying to the clipboard.
+
+
 
 ## Deploy
