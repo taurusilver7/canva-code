@@ -45,6 +45,6 @@ Create a CodeEditor component with a mac-style header & react-simple-code-editor
 
 Setup a global state with zustand. Create initial vales for the code-snippet user preferences in the store & import them in root & codeEditor. Create terenary operators for background, theme, fonts in the code snippet.
 
-
+Add the export options to the menu, and create their corresponding handler functions.
 
 ## Deploy
