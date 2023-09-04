@@ -43,6 +43,8 @@ Add the react Toaster at the top level in the root component. Make a programming
 
 Create a CodeEditor component with a mac-style header & react-simple-code-editor component.
 
-Setup a global state with zustand. Create initial vales for the code-snippet user preferences in the store & 
+Setup a global state with zustand. Create initial vales for the code-snippet user preferences in the store & import them in root & codeEditor. Create terenary operators for background, theme, fonts in the code snippet.
+
+
 
 ## Deploy
