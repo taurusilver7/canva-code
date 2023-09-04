@@ -41,6 +41,8 @@ Follow the guide and add [shadcn-ui] to the dependencies. Add other dependencies
 
 Add the react Toaster at the top level in the root component. Make a programming language object file to support multi pardigarm languages.
 
-Create a CodeEditor component
+Create a CodeEditor component with a mac-style header & react-simple-code-editor component.
+
+Setup a global state with zustand
 
 ## Deploy
