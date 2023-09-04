@@ -1,5 +1,7 @@
 import { cn } from "@/lib/utils";
-import React from "react";
+import Editor from "react-simple-code-editor";
+import hljs from "highlight.js";
+import { codeSnippets } from "@/options";
 
 const CodeEditor = () => {
 	return (
@@ -14,8 +16,31 @@ const CodeEditor = () => {
 					<div className="rounded-full h-3 w-3 bg-yellow-500" />
 					<div className="rounded-full h-3 w-3 bg-green-500" />
 				</div>
+
+				<div className="col-span-4 flex justify-center">
+					<input
+						type="text"
+						spellChecked={false}
+						onClick={(e) => e.target.select()}
+						value="Untitled"
+						className="bg-transparent text-center text-gray-400 text-sm font-medium focus:outline-none"
+					/>
+				</div>
 			</header>
-			CodeEditor
+
+			{/* Code Editor */}
+			<div className={cn("px-4 pb-4")}>
+				<Editor
+					value={codeSnippets[3].code}
+					highlight={(code) =>
+						hljs.highlight(code, { language: codeSnippets[3].language })
+							.value
+					}
+					style={{ fontStyle: "JetBrains Mono", fontSize: 18 }}
+					textAreaClassName="focus:outline-none"
+					onClick={(e) => e.target.select()}
+				/>
+			</div>
 		</div>
 	);
 };
