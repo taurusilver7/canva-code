@@ -18,6 +18,8 @@ import useStore from "@/store";
 import { toast } from "react-hot-toast";
 
 function ExportOptions({ targetRef }) {
+	const title = useStore((state) => state.title);
+
 	const copyImage = async () => {
 		const imgBlob = await toBlob(targetRef.current, {
 			pixelRatio: 2,
@@ -33,6 +35,29 @@ function ExportOptions({ targetRef }) {
 			code: btoa(state.code),
 		}).toString();
 		navigator.clipboard.writeText(`${location.href}?${queryParams}`);
+	};
+
+	const saveImage = async (name, format) => {
+		let imgUrl, fileName;
+
+		switch (format) {
+			case "PNG":
+				imgUrl = await toPng(targetRef.current, { pixelRatio: 2 });
+				fileName = `${name}.png`;
+				break;
+			case "SVG":
+				imgUrl = await toSvg(targetRef.current, { pixelRatio: 2 });
+				fileName = `${name}.svg`;
+				break;
+
+			default:
+				return;
+		}
+
+		const a = document.createElement("a");
+		a.href = imgUrl;
+		a.download = fileName;
+		a.click();
 	};
 	return (
 		<DropdownMenu>
@@ -68,11 +93,29 @@ function ExportOptions({ targetRef }) {
 					Copy Link
 				</DropdownMenuItem>
 				<DropdownMenuSeparator />
-				<DropdownMenuItem className="gap-2">
+				<DropdownMenuItem
+					className="gap-2"
+					onClick={() =>
+						toast.promise(saveImage(title, "PNG"), {
+							loading: "Exporting PNG Image...",
+							success: "Exported Succesfully",
+							error: "Something went wrong!",
+						})
+					}
+				>
 					<DownloadIcon />
 					Save as PNG*
 				</DropdownMenuItem>
-				<DropdownMenuItem className="gap-2">
+				<DropdownMenuItem
+					className="gap-2"
+					onClick={() =>
+						toast.promise(saveImage(title, "SVG"), {
+							loading: "Exporting SVG Image...",
+							success: "Exported Succesfully",
+							error: "Something went wrong!",
+						})
+					}
+				>
 					<DownloadIcon />
 					Save as SVG*
 				</DropdownMenuItem>
