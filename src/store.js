@@ -1,13 +1,12 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { codeSnippets } from "./options";
 
 const useStore = create(
 	persist(
 		() => ({
 			code: "",
 			title: "Untitled",
-			theme: "hyper",
+			theme: "oceanic",
 			darkMode: true,
 			showBackground: true,
 			language: "plainText",
