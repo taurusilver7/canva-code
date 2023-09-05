@@ -14,6 +14,7 @@ function App() {
 	const showBackground = useStore((state) => state.showBackground);
 
 	const editorRef = useRef(null);
+	console.log(theme);
 
 	useEffect(() => {
 		const queryParams = new URLSearchParams(location.search);
@@ -33,7 +34,7 @@ function App() {
 		<main className="dark bg-neutral-950 text-white flex gap-5 min-h-screen justify-center items-center">
 			<link
 				rel="stylesheet"
-				href={themes[theme].theme}
+				href={themes[theme]?.theme}
 				crossOrigin="anonymous"
 			/>
 			<link
@@ -56,8 +57,8 @@ function App() {
 
 			<Card className="fixed bottom-16 py-6 px-8 mx-6 bg-neutral-900/90 backdrop-blur">
 				<CardContent className="flex flex-wrap gap-6 p-0">
-					<ThemeSelect />
 					<ExportOptions targetRef={editorRef} />
+					<ThemeSelect />
 				</CardContent>
 			</Card>
 		</main>
