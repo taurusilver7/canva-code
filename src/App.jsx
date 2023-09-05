@@ -4,7 +4,7 @@ import { Card, CardContent } from "./components/ui/card";
 import { cn } from "./lib/utils";
 import { fonts, themes } from "./options";
 import useStore from "./store";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
 function App() {
 	const theme = useStore((state) => state.theme);
@@ -13,6 +13,21 @@ function App() {
 	const showBackground = useStore((state) => state.showBackground);
 
 	const editorRef = useRef(null);
+
+	useEffect(() => {
+		const queryParams = new URLSearchParams(location.search);
+		if (queryParams.size === 0) return;
+		const state = Object.fromEntries(queryParams);
+
+		useStore.setState({
+			...state,
+			code: state.code ? atob(state.code) : "",
+			autoDetectLanguage: state.autoDetectLanguage === "true",
+			darkMode: state.darkMode === "true",
+			fontSize: Number(state.fontSize || 18),
+			padding: Number(state.padding || 64),
+		});
+	}, []);
 	return (
 		<main className="dark bg-neutral-950 text-white flex gap-5 min-h-screen justify-center items-center">
 			<link
@@ -38,7 +53,7 @@ function App() {
 				<CodeEditor />
 			</div>
 
-			<Card className="fixed top-8 py-6 px-8 mx-6 bg-neutral-900/90 backdrop-blur">
+			<Card className="fixed bottom-16 py-6 px-8 mx-6 bg-neutral-900/90 backdrop-blur">
 				<CardContent className="flex flex-wrap gap-6 p-0">
 					<ExportOptions targetRef={editorRef} />
 				</CardContent>
