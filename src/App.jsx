@@ -1,5 +1,9 @@
 import CodeEditor from "./components/CodeEditor";
 import ExportOptions from "./components/controls/ExportOptions";
+import FontSelect from "./components/controls/FontSelection";
+import FontSizeInput from "./components/controls/FontSizeInput";
+import LanguageSelect from "./components/controls/LanguageSelect";
+import PaddingSlider from "./components/controls/PaddingSlider";
 import ThemeSelect from "./components/controls/ThemeSelect";
 import { Card, CardContent } from "./components/ui/card";
 import { cn } from "./lib/utils";
@@ -14,7 +18,7 @@ function App() {
 	const showBackground = useStore((state) => state.showBackground);
 
 	const editorRef = useRef(null);
-	console.log(theme);
+	// console.log(theme);
 
 	useEffect(() => {
 		const queryParams = new URLSearchParams(location.search);
@@ -31,7 +35,7 @@ function App() {
 		});
 	}, []);
 	return (
-		<main className="dark bg-neutral-950 text-white flex gap-5 min-h-screen justify-center items-center">
+		<main className="dark bg-neutral-950 text-white flex gap-2 min-h-screen justify-center items-center">
 			<link
 				rel="stylesheet"
 				href={themes[theme]?.theme}
@@ -55,10 +59,17 @@ function App() {
 				<CodeEditor />
 			</div>
 
-			<Card className="fixed bottom-16 py-6 px-8 mx-6 bg-neutral-900/90 backdrop-blur">
+			<Card className="fixed top-4 py-6 px-8 mx-6 bg-neutral-900/90 backdrop-blur">
 				<CardContent className="flex flex-wrap gap-6 p-0">
-					<ExportOptions targetRef={editorRef} />
+					<LanguageSelect />
+					<FontSelect />
+					<FontSizeInput />
+					<PaddingSlider />
 					<ThemeSelect />
+					<div className="w-px bg-neutral-800" />
+					<div className="place-self-center">
+						<ExportOptions targetRef={editorRef} />
+					</div>
 				</CardContent>
 			</Card>
 		</main>
