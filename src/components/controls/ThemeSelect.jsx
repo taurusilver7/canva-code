@@ -23,7 +23,7 @@ const ThemeSelect = () => {
 				<SelectTrigger className="w-40">
 					<SelectValue placeholder="Select Theme" />
 				</SelectTrigger>
-				<SelectContent className="dark">
+				<SelectContent className="dark max-h-[400px]">
 					{Object.entries(themes).map(([name, theme]) => (
 						<SelectItem key={name} value={name}>
 							<div className="flex gap-2 items-center">
