@@ -12,7 +12,7 @@ import { themes } from "@/options";
 
 const ThemeSelect = () => {
 	const store = useStore();
-	console.log(store.theme);
+	// console.log(store.theme);
 	return (
 		<div>
 			<label className="block mb-2 text-xs font-medium">Theme</label>
@@ -20,10 +20,10 @@ const ThemeSelect = () => {
 				defaultValue={store.theme}
 				onValueChange={(theme) => useStore.setState({ theme: theme })}
 			>
-				<SelectTrigger className="w-40">
+				<SelectTrigger className="w-32">
 					<SelectValue placeholder="Select Theme" />
 				</SelectTrigger>
-				<SelectContent className="dark max-h-[400px]">
+				<SelectContent className="dark max-h-[300px]">
 					{Object.entries(themes).map(([name, theme]) => (
 						<SelectItem key={name} value={name}>
 							<div className="flex gap-2 items-center">
