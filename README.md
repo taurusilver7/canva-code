@@ -51,6 +51,8 @@ Create a copyLink handler function to get the code state from the store before c
 
 The App root component should handle the copyLink since the query parameters for the location are available in the App component.
 
-Customize the snippet props like the theme, cropping, language, fonts, darkMode. Adjust the overflow height of languages
+Customize the snippet props like the theme, cropping, language, fonts, darkMode. Adjust the overflow height of options & their widths to fit into the block.
+
+Add additional options, if any.
 
 ## Deploy
