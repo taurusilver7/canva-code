@@ -26,11 +26,11 @@ const LanguageSelect = () => {
 		<div>
 			<label className="block mb-2 text-xs font-medium">Language</label>
 			<Select defaultValue={language} onValueChange={handleChange}>
-				<SelectTrigger className="w-40">
+				<SelectTrigger className="w-32">
 					{autoDetectLanguage && <MagicWandIcon className="mr-2" />}
 					<SelectValue placeholder="Select language" />
 				</SelectTrigger>
-				<SelectContent className="dark max-h-[400px]">
+				<SelectContent className="dark max-h-[300px]">
 					<SelectItem value="auto-detect">Auto Detect</SelectItem>
 					{Object.entries(languages).map(([lang, name]) => (
 						<SelectItem key={lang} value={lang}>
