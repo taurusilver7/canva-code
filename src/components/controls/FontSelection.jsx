@@ -8,9 +8,8 @@ import {
 } from "../ui/select";
 import useStore from "@/store";
 import { fonts } from "@/options";
-import { MagicWandIcon } from "@radix-ui/react-icons";
 
-const LanguageSelect = () => {
+const FontSelect = () => {
 	const fontStyle = useStore((state) => state.fontStyle);
 
 	return (
@@ -21,13 +20,12 @@ const LanguageSelect = () => {
 				onValueChange={(fontStyle) => useStore.setState({ fontStyle })}
 			>
 				<SelectTrigger className="w-40">
-					{autoDetectLanguage && <MagicWandIcon className="mr-2" />}
 					<SelectValue placeholder="Select font" />
 				</SelectTrigger>
-				<SelectContent className="dark max-h-[400px]">
-					{Object.entries(languages).map(([id, font]) => (
+				<SelectContent className="dark max-h-[300px]">
+					{Object.entries(fonts).map(([id, font]) => (
 						<SelectItem key={id} value={id}>
-							{font}
+							{font.name}
 						</SelectItem>
 					))}
 				</SelectContent>
@@ -36,4 +34,4 @@ const LanguageSelect = () => {
 	);
 };
 
-export default LanguageSelect;
+export default FontSelect;
