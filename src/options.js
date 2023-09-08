@@ -54,7 +54,7 @@ export const themes = {
 	mojave: {
 		background:
 			"bg-gradient-to-tr from-yellow-100 via-yellow-300 to-yellow-500",
-		theme: "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/base16/chalk.min.css",
+		theme: "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css",
 	},
 	seafoam: {
 		background: "bg-gradient-to-r from-green-200 via-green-300 to-blue-500",
